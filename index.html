@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#090909">
+  <title>NEW MANAGEMENT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">NEW MANAGEMENT <span id="phase-label">INITIALISING</span></div>
+      <div class="top-stats">
+        <span id="shift-label">SHIFT 0</span>
+        <span id="money-label">$0</span>
+        <span id="quota-label">ENERGY 0 / 0</span>
+        <span id="timer-label">10:00</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="intro-screen" class="screen intro-screen">
+        <div class="intro-card">
+          <div class="eyebrow">CORPORATE ORIENTATION / 00</div>
+          <h1>NEW<br>MANAGEMENT</h1>
+          <p id="intro-copy"></p>
+          <button id="intro-confirm" class="primary">ACKNOWLEDGE</button>
+        </div>
+      </section>
+
+      <section id="start-screen" class="screen hidden">
+        <div class="start-card">
+          <div class="eyebrow">FACILITY MANAGEMENT DIVISION</div>
+          <h1>NEW MANAGEMENT</h1>
+          <p>YOUR APPOINTMENT HAS BEEN CONFIRMED.</p>
+          <button id="start-button" class="primary">BEGIN MANAGEMENT</button>
+        </div>
+      </section>
+
+      <section id="offtime-screen" class="screen hidden">
+        <div class="phase-heading">
+          <div><div class="eyebrow">INTERMISSION</div><h2>OFFTIME</h2></div>
+          <div class="phase-note">Select one sealed crate to continue.</div>
+        </div>
+        <div class="offtime-grid">
+          <div class="panel crate-panel">
+            <h3>ABNORMALITY INTAKE</h3>
+            <p class="muted">Three shipments have arrived. Only one may be opened.</p>
+            <div id="crate-list" class="crate-list"></div>
+            <div id="crate-status" class="status-line">AWAITING SELECTION</div>
+          </div>
+          <div class="panel">
+            <h3>PERSONNEL & EQUIPMENT</h3>
+            <div class="finance-row"><span>Available funds</span><strong id="offtime-money">$0</strong></div>
+            <div class="finance-row"><span>Employees</span><strong id="employee-count">0</strong></div>
+            <div class="finance-row"><span>Wages per shift</span><strong id="wages">$0</strong></div>
+            <div class="hire-row">
+              <input id="employee-name" maxlength="22" placeholder="Employee name">
+              <button id="hire-button">HIRE / $100</button>
+            </div>
+            <p class="muted small">New employees arrive on the uppermost floor. Researchers and suppressors are assigned automatically.</p>
+            <div id="staff-list" class="staff-list"></div>
+          </div>
+        </div>
+        <div class="offtime-footer">
+          <span id="next-shift-note">A crate must be selected before the shift can begin.</span>
+          <button id="begin-shift-button" class="primary" disabled>BEGIN SHIFT</button>
+        </div>
+      </section>
+
+      <section id="shift-screen" class="screen hidden">
+        <div class="shift-toolbar">
+          <div><div class="eyebrow">ACTIVE OPERATIONS</div><h2>SHIFT <span id="shift-number">1</span></h2></div>
+          <div class="quota-wrap">
+            <div class="quota-copy"><span>ENERGY QUOTA</span><strong id="quota-copy">0 / 0</strong></div>
+            <div class="quota-track"><div id="quota-fill"></div></div>
+          </div>
+          <button id="info-button" class="secondary">FACILITY / INFO</button>
+        </div>
+
+        <div class="facility-viewport" id="facility-viewport">
+          <div id="facility-world" class="facility-world"></div>
+        </div>
+        <div class="shift-footer">
+          <div id="shift-message">OPERATIONS NORMAL.</div>
+          <button id="end-shift-button" class="danger">END SHIFT</button>
+        </div>
+      </section>
+    </main>
+
+    <aside id="detail-panel" class="detail-panel hidden">
+      <button id="close-detail" class="close-button">×</button>
+      <div id="detail-content"></div>
+    </aside>
+    <div id="modal-backdrop" class="modal-backdrop hidden">
+      <div class="modal panel">
+        <button id="close-modal" class="close-button">×</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+  </div>
+  <script src="data.js"></script>
+  <script src="audio.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
